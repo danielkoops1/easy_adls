@@ -2,7 +2,7 @@
 Wrapper around the Azure Storage Blobs SDK to make life a bit easier.
 
 ### Install
-`not yet..`
+`pip install EasyAdls`
 
 ### Examples
 ```
@@ -23,7 +23,7 @@ client.get_properties('blob.jpg')
 
 df = client.read_csv_to_pandas('some.csv', header=None, sep=',')
 
-client.write_pandas_to_csv(df, 'some.csv', overwrite=False, index=True)
+client.write_pandas_to_csv(df, 'another.csv', overwrite=False, index=True)
 
 # get a normal string of bytestring back from a blob
 

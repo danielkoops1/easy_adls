@@ -10,4 +10,5 @@ setuptools.setup(
         'pandas>=1.2.4',
         'azure-storage-blob>=12.13.1',
           ],
+    python_requires='>=3.6',
 )

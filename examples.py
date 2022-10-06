@@ -10,7 +10,7 @@ client = EasyBlob(account_name='mystorageaccount',
 client.get_properties('blob.jpg')
 
 # read a csv into a pandas dataframe and vice versa
-# you can pass-down all arguments of pd.read_csv() and pdf.to_csv()
+# you can pass-down all arguments of pd.read_csv() and pd.to_csv()
 pdf = client.read_csv_to_pandas('some.csv', header=None, sep=',')
 client.write_pandas_to_csv(pdf, 'another.csv', overwrite=False, index=True)
 

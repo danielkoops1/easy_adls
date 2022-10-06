@@ -21,7 +21,7 @@ client.get_properties('blob.jpg')
 ```
 
 Read / write a csv directly into a pandas dataframe. You can pass-down 
-all arguments of `pd.read_csv()` and `pdf.to_csv()`:
+all arguments of `pandas.read_csv()` and `pandas.to_csv()`:
 ```
 # read csv
 df = client.read_csv_to_pandas('some.csv', header=None, sep=',')

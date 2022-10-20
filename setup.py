@@ -6,7 +6,7 @@ with open(os.path.join(os.path.dirname(__file__), "README.md")) as readme:
 
 setuptools.setup(
     name="EasyAdls",
-    version="0.1.2",
+    version="0.1.3",
     author="D. Koops",
     description="Wrapper around the Azure Storage Blobs SDK to make life a bit easier",
     long_description=README,

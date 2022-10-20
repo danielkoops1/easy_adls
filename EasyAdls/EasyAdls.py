@@ -18,6 +18,8 @@ class EasyBlob:
         self.client = BlobServiceClient(account_url=f"https://{account_name}"
                                                     f".blob.core.windows.net/",
                                         credential=credential)
+
+        self.account_name = account_name
         self.container = container
 
         try:
@@ -107,3 +109,38 @@ class EasyBlob:
 
         with open(local_file, 'rb') as data:
             return blob.upload_blob(data, overwrite=overwrite)
+
+    def move_or_rename_blob(self, source_path, destination_path, destination_container=None):
+        """ Move-, or rename a (blob)file """
+
+        if destination_container is None:
+            dest_container = self.container
+        else:
+            dest_container = destination_container
+
+        src = f"https://{self.account_name}.blob.core.windows.net/{self.container}/" \
+              f"{source_path.lstrip('/')}"
+
+        dest_blob = self.client.get_blob_client(dest_container, destination_path)
+        copy_resp = dest_blob.start_copy_from_url(src)
+
+        remove_blob = self.client.get_blob_client(self.container, source_path)
+        remove_blob.delete_blob()
+
+        return copy_resp
+
+    def copy_blob(self, source_path, destination_path, destination_container=None):
+        """ Copy a (blob)file """
+
+        if destination_container is None:
+            dest_container = self.container
+        else:
+            dest_container = destination_container
+
+        src = f"https://{self.account_name}.blob.core.windows.net/{self.container}/" \
+              f"{source_path.lstrip('/')}"
+
+        dest_blob = self.client.get_blob_client(dest_container, destination_path)
+        copy_resp = dest_blob.start_copy_from_url(src)
+
+        return copy_resp

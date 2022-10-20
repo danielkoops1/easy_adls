@@ -20,6 +20,25 @@ Retrieve properties of a blob:
 client.get_properties('blob.jpg')
 ```
 
+Copy a blob. You can specify another container if needed, default is same container:
+```
+# copy a blob
+client.copy_blob('blob.jpg', 'copy_of_blob.jpg')
+
+client.copy_blob(source_path='blob.jpg',
+                 destination_path='copy_of_blob.jpg',
+                 destination_container='anothercontainer')
+```
+
+Move-, or rename a blob. You can specify another container if needed, default is same container
+```
+client.move_or_rename_blob('blob.jpg', 'renamed_blob.jpg')
+
+client.move_or_rename_blob(source_path='/path/to/blob.jpg',
+                           destination_path='/another/path/to/blob.jpg',
+                           destination_container='anothercontainer')
+```
+
 Read / write a csv directly into a pandas dataframe. You can pass-down 
 all arguments of `pandas.read_csv()` and `pandas.to_csv()`:
 ```
